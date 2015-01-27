@@ -1,0 +1,28 @@
+plugins {
+	id 'nu.studer.plugindev' version '1.0.3'
+}
+
+apply plugin: 'groovy'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    testCompile 'junit:junit:4.11'
+}
+
+group = 'org.lukosan'
+version = '0.0.1.DEV'
+
+plugindev {
+	pluginId 'org.lukosan.localDependencies'
+    pluginImplementationClass 'org.lukosan.gradle.plugins.LocalDependenciesPlugin'
+    pluginDescription 'Gradle plugin that builds other gradle projects (i.e. not subprojects) and then makes the resulting jars available as a compile dependency to this project.'
+    pluginLicenses 'Apache-2.0'
+    pluginTags 'gradle', 'plugin', 'dependencies'
+    authorId 'lukosan'
+    authorName 'Luke Pryor'
+    authorEmail 'oss@lukosan.org'
+    projectUrl 'https://github.com/lukosan/gradle-local-dependencies-plugin'
+    projectInceptionYear '2015'
+    done()
+}

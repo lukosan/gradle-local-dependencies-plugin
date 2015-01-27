@@ -3,3 +3,17 @@ build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
+
+# Ignore local Gradle properties
+gradle.properties
+
+# Eclipse
+.classpath
+.project
+.springBeans
+.settings/
+.metadata/
+bin/
+
+# Mac OSX
+.DS_Store
