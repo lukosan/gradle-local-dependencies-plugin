@@ -29,7 +29,7 @@ plugin in the build.gradle file of the "web-server" project.
 
 To configure the plugin:
 
-<code>
+```groovy
 localDependencies {
 	// register the dependent project, syntax is:
 	// compile = [ 'relative/path/to/other/project:name-of-jar:version-of-jar' ]
@@ -42,11 +42,11 @@ localDependencies {
     	'commons-dbcp:commons-dbcp:1.4'
 	]
 }
-</code>
+```
 
 And to register the plugin from the hosted repository:
 
-<code>
+```groovy
 buildscript {
   repositories {
     jcenter()
@@ -57,11 +57,11 @@ buildscript {
 }
 
 apply plugin: "org.lukosan.gradle-local-dependencies-plugin"
-</code>
+```
 
 OR you could just write the plugin inline in the build.gradle file:
 
-<code>
+```groovy
 // apply the plugin
 apply plugin: LocalDependenciesPlugin
 
@@ -105,4 +105,4 @@ class LocalDependenciesPluginExtension {
     def String[] compile;
     def String[] runtime;
 }
-</code>
+```
