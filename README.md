@@ -33,7 +33,7 @@ To configure the plugin:
 localDependencies {
 	// register the dependent project, syntax is:
 	// compile = [ 'relative/path/to/other/project:name-of-jar:version-of-jar' ]
-	compile = ['../model:paisley-model:0.1.0']
+	compile = ['../model:domain-model:0.1.0']
 	// register the compile dependencies of the other project as runtime dependencies of this one
 	runtime = [
 	    'org.springframework.boot:spring-boot-starter-data-jpa:1.1.4.RELEASE',
