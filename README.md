@@ -5,14 +5,16 @@ jars available as dependencies to this project.
 
 ## Why does this exist?
 
-I have a project which is a dependancy of 3 other projects. The other projects are quite distinct
-from each other so it would not be appropriate to include all 4 projects as subprojects in the typical
-gradle multi-project way. Also the projects must be in separate repos.
+I have a project which is a dependancy of 3 other projects. The other projects are already subprojects of different multi-project builds and I do not want to make them all subprojects of one big multi-project build in the usual gradle multi-project way. Also the projects must be in separate repos.
 
 The "correct" solution is to publish the shared project's jar to a hosted maven repository and have
 the dependent projects reference this amongst their respective dependencies. However, the shared project
 is inchoate and will be in a state of flux for the next few months so I want to make it easy for
 developers to change/fix/extend the source of the shared project.
+
+Another solution would be to ensure that all the subprojets of all the projects are all checked out into the same parent folder, and then use "includeFlat 'shared-dependency'" and a whole load of similar config in their settings.gradle files.
+
+This plugin provides a workaround where by you can call the build.gradle file of any project located anywhere relative to your current project and have the resulting jar available to your current project.
 
 ## What about the STS Gradle plugin?
  
@@ -23,8 +25,7 @@ used in the build loop.
 
 ## Using the plugin
 
-Given a project "web-server" which depends upon another project "domain-model", that are both cloned
-into the same parent folder. Each has its own build.gradle file. You only need to add and configure the
+Given a project "web-server" which depends upon another project "domain-model". Each has its own build.gradle file. You only need to add and configure the
 plugin in the build.gradle file of the "web-server" project.
 
 To configure the plugin:
@@ -33,7 +34,7 @@ To configure the plugin:
 localDependencies {
 	// register the dependent project, syntax is:
 	// compile = [ 'relative/path/to/other/project:name-of-jar:version-of-jar' ]
-	compile = ['../model:domain-model:0.1.0']
+	compile = ['../../core-project/model:domain-model:0.1.0']
 	// register the compile dependencies of the other project as runtime dependencies of this one
 	runtime = [
 	    'org.springframework.boot:spring-boot-starter-data-jpa:1.1.4.RELEASE',
